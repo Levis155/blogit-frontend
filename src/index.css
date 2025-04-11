@@ -1,0 +1,33 @@
+:root {
+  --light-pink:rgb(253, 243, 233);
+  --orange-color:rgb(235, 146, 37);
+  --brown-color:rgb(75, 30, 9);
+  --white-color: white;
+  --black-color:black;
+  --primary-font: "Space Grotesk", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: var(--primary-font);
+  /* background-color: var(--light-pink); */
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
