@@ -1,9 +1,9 @@
 .blogs-listing-section{
-    padding: 5rem 10rem;
+    padding: 5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 2rem;
-    row-gap: 2rem;
+    row-gap: 3rem;
 }
 .blogs-listing-card{
     background-color: var(--white-color);
