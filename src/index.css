@@ -20,7 +20,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: var(--primary-font);
-  /* background-color: var(--light-pink); */
+  background-color: var(--light-pink);
 }
 
 a {

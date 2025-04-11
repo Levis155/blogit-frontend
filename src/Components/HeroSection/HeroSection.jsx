@@ -9,10 +9,10 @@ function HeroSection() {
                 We believe every thought deserves a home
             </p>
             <p className="hero-section-excerpt">
-                Every thought, idea, and story deserves a place to belong - that's why Blogit. Here, your words find a home, whether they're fleeting reflections or bold declarations. Share freely, connect deeply, and let your ideas thrive in a community that values every voice. Because when thoughts have a home they grow into something extraordinary.
+                Share freely, connect deeply, and let your ideas thrive in a community that values every voice. Because when thoughts have a home they grow into something extraordinary.
             </p>
             <div className="hero-cta-links-container">
-                <a href="#" className="hero-start-link">begin writing</a>
+                <a href="#" className="hero-start-link">start sharing</a>
                 <a href="#" className="hero-explore-link">explore voices</a>
             </div>
         </div>
