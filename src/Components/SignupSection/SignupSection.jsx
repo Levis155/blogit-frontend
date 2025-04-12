@@ -56,8 +56,8 @@ function SignupCard() {
     return(
         <form className="signup-form" onSubmit={handleRegister}>
             <div className="signup-title-cont">
-                <p className="signup-main-title">Sign up</p>
-                <p className="signup-subtitle">Already have an account? <Link href="">Log in!</Link></p>
+                <p className="signup-main-title">create account</p>
+                <p className="signup-subtitle">Already have an account? <Link to="/signin">sign in!</Link></p>
             </div>
             {formError && <Alert severity="error" sx={{mb:"1rem", fontSize:"1.4rem"}}>{formError}</Alert>}
             <TextField variant="standard" label="First Name" required value={firstName} onChange={e => setFirstName(e.target.value)} sx={{mb:"2rem","& .MuiInputBase-input": { fontSize: "1.8rem" },"& .MuiInputLabel-root": { fontSize: "1.8rem" },}}  />

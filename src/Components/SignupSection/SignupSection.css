@@ -21,6 +21,7 @@
     color: var(--brown-color);
     font-size: 3.5rem;
     font-weight: 800;
+    text-transform: capitalize;
 }
 .signup-subtitle a{
     color: var(--orange-color);
