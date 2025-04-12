@@ -1,5 +1,6 @@
 import "./HeroSection.css"
 import heroImage from "../../assets/hero-img.jpg";
+import { Link } from "react-router-dom";
 
 function HeroSection() {
   return (
@@ -12,8 +13,8 @@ function HeroSection() {
                 Share freely, connect deeply, and let your ideas thrive in a community that values every voice. Because when thoughts have a home they grow into something extraordinary.
             </p>
             <div className="hero-cta-links-container">
-                <a href="#" className="hero-start-link">start sharing</a>
-                <a href="#" className="hero-explore-link">explore voices</a>
+                <Link href="#" className="hero-start-link">start sharing</Link>
+                <Link href="#" className="hero-explore-link">explore voices</Link>
             </div>
         </div>
         <div className="hero-section-middle">

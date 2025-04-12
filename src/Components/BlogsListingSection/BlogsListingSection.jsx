@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import "./BlogsListingSection.css"
 import blogsListingImg from "../../assets/blogs-listing-img.jpg";
 import randomUser from "../../assets/random-user.jpg";
@@ -37,9 +38,9 @@ function BlogsListingCard({blogsListingCardImg, blogsListingProfilePic, blogsLis
 
                 <p className="blogs-listing-card-excerpt">{blogsListingCardExcerpt}</p>
 
-                <a href="" className="blogs-listing-card-link">
+                <Link href="" className="blogs-listing-card-link">
                     read more
-                </a>
+                </Link>
             </div>
         </div>
     )
