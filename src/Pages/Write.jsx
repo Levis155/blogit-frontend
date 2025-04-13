@@ -1,7 +1,11 @@
+import Header from "../Components/Header/Header"
+import WriteSection from "../Components/WriteSection/WriteSection"
+
 function Write() {
   return (
     <div>
-      <h1>This is the write page</h1>
+      <Header />
+      <WriteSection />
     </div>
   )
 }

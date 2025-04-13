@@ -1,0 +1,96 @@
+.my-profile-section{
+    padding: 5rem;
+}
+.my-profile-header{
+    height: 10rem;
+    display: flex;
+}
+.user-avatar{
+    height: 100%;
+    width: 10rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.user-avatar img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.my-profile-header-details{
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.my-profile-header-name{
+    font-size: 2.2rem;
+    text-transform: capitalize;
+    font-weight: 800;
+}
+.my-profile-header-date{
+    font-size: 1.4rem;
+    font-style: italic;
+    text-transform: capitalize;
+}
+.profile-details-card{
+    background-color: var(--white-color);
+    margin-top: 2rem;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+.profile-details-title{
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    font-weight: 800;
+    text-transform: capitalize;
+}
+.profile-detail-cont{
+    display: flex;
+    column-gap: 3%;
+    row-gap: 1rem;
+    flex-wrap: wrap;
+}
+.profile-detail{
+    width: 47%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid lightgray;
+}
+.profile-detail-title{
+    font-size: 1.9rem;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+.profile-detail-subtitle{
+    text-transform: capitalize;
+    color: gray;
+}
+.edit-profile{
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border: 1px solid var(--brown-color);
+    background-color: transparent;
+    color: var(--brown-color);
+    border-radius: 2rem;
+    text-transform: capitalize;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.6rem;
+    font-family: inherit;
+}
+.update-pass-btn{
+    padding: 1rem 2rem;
+    border: 1px solid var(--brown-color);
+    background-color: transparent;
+    color: var(--brown-color);
+    text-transform: uppercase;
+    margin-top: 2rem;
+    cursor: pointer;
+}

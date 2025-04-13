@@ -30,7 +30,7 @@ function SignupCard() {
             return response.data;
         },
         onSuccess: () => {
-            navigate("/login");
+            navigate("/signin");
         },
         onError: (err) => {
             if (axios.isAxiosError(err)) {

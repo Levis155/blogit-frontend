@@ -13,8 +13,8 @@ function HeroSection() {
                 Share freely, connect deeply, and let your ideas thrive in a community that values every voice. Because when thoughts have a home they grow into something extraordinary.
             </p>
             <div className="hero-cta-links-container">
-                <Link href="#" className="hero-start-link">start sharing</Link>
-                <Link href="#" className="hero-explore-link">explore voices</Link>
+                <Link to="/write" className="hero-start-link">start sharing</Link>
+                <Link to="/all-blogs" className="hero-explore-link">explore voices</Link>
             </div>
         </div>
         <div className="hero-section-middle">

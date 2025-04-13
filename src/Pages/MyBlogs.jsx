@@ -1,7 +1,11 @@
+import Header from "../Components/Header/Header";
+import MyBlogsSection from "../Components/MyBlogsSection/MyBlogsSection";
+
 function MyBlogs() {
   return (
     <div>
-      <h1>This is the my blogs page</h1>
+      <Header />
+      <MyBlogsSection />
     </div>
   )
 }

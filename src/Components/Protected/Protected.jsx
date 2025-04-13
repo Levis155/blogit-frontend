@@ -8,7 +8,7 @@ function Protected({children}) {
 
     useEffect(() => {
         if(!user) {
-            navigate("/login");
+            navigate("/");
         }
     }, [user]);
 

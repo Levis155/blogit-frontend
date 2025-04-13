@@ -11,7 +11,7 @@
 }
 .blogs-listing-card-top{
     width: 100%;
-    height: 30rem;
+    height: 25rem;
 }
 .blogs-listing-card-top img{
     width: 100%;
@@ -19,16 +19,16 @@
     object-fit: cover;
 }
 .blogs-listing-card-bottom{
-    padding: 3rem;
+    padding: 1rem 3rem 3rem 3rem;
 }
 .blogs-listing-author-cont{
     display: flex;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 .blogs-listing-profile-pic{
-    width: 8rem;
-    height: 8rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -51,7 +51,7 @@
     font-size: 1.4rem;
 }
 .blogs-listing-card-title{
-    font-size: 3rem;
+    font-size: 2.2rem;
     font-weight: 800;
     margin-bottom: .5rem;
 }
@@ -61,6 +61,6 @@
 .blogs-listing-card-link{
     color: var(--brown-color);
     border: 1px solid var(--brown-color);
-    padding: 1rem 2rem;
+    padding: 1rem;
     text-transform: capitalize;
 }

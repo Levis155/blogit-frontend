@@ -38,7 +38,7 @@ function BlogsListingCard({blogsListingCardImg, blogsListingProfilePic, blogsLis
 
                 <p className="blogs-listing-card-excerpt">{blogsListingCardExcerpt}</p>
 
-                <Link href="" className="blogs-listing-card-link">
+                <Link to="/article" className="blogs-listing-card-link">
                     read more
                 </Link>
             </div>

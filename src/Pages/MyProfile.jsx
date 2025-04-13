@@ -1,7 +1,11 @@
+import Header from "../Components/Header/Header";
+import MyProfileSection from "../Components/MyProfileSection/MyProfileSection";
+
 function MyProfile() {
   return (
     <div>
-      <h1>This is the my profile page</h1>
+      <Header />
+      <MyProfileSection />
     </div>
   )
 }
