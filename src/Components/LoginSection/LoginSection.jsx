@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import useUserStore from "../../stores/userStore";
 import "./LoginSection.css";
+import apiUrl from "../../utils/apiUrl";
 
 function LoginSection() {
   return (
@@ -24,7 +25,7 @@ function LoginCard() {
     const {isPending, mutate} = useMutation({
         mutationKey: ["user-login"],
         mutationFn: async () => {
-            const response = await axios.post("http://localhost:3000/auth/login", {identifier, password}, {withCredentials: true})
+            const response = await axios.post(`${apiUrl}/auth/login`, {identifier, password}, {withCredentials: true})
             return response.data;
         },
         onSuccess: (data) => {

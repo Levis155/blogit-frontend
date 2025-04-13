@@ -4,20 +4,23 @@ import { useState } from "react";
 import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
 import { Alert } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import apiUrl from "../../utils/apiUrl";
 
 function WriteSection() {
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [formError, setFormError] = useState(null)
+  const navigate = useNavigate();
 
   const {isPending, mutate} = useMutation({
     mutationKey: [],
     mutationFn: async () => {
-      const response = await axios.post("http://localhost:3000/blogs", {title, excerpt}, {withCredentials: true})
+      const response = await axios.post(`${apiUrl}/blogs`, {title, excerpt}, {withCredentials: true})
       return response.data;
     },
     onSuccess: (data) => {
-      //redirect to page showing article
+      navigate(`/blogs/${data.newBlog.id}`)
     },
     onError: (err) => {
       if(axios.isAxiosError(err)){

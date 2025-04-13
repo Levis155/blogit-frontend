@@ -1,21 +1,35 @@
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import "./ArticleSection.css";
 import articleImg from "../../assets/blogs-listing-img.jpg";
 import randomUser from "../../assets/random-user.jpg";
+import axios from "axios";
+import apiUrl from "../../utils/apiUrl";
 
 function ArticleSection() {
+  const {blogId} = useParams();
+  console.log(blogId);
+  const {isLoading, data, isError, error} = useQuery({
+    queryKey: ["get-blog"],
+    queryFn: async () => {
+      const response = await axios.get(`${apiUrl}/blogs/${blogId}`, {withCredentials: true})
+      console.log(response.data);
+      return response.data;
+    }
+  })
   return (
     <section className="article-section">
-      <ArticleContainer />
+      <ArticleContainer data={data} />
       <FeaturedArticles />
     </section>
   );
 }
 
-function ArticleContainer() {
+function ArticleContainer({data}) {
   return (
     <div className="article-container">
       <p className="article-title">
-        The Unhurried Life: Why Slowing Down Makes You More Productive
+        {data && data.title}
       </p>
 
       <div className="blogs-listing-author-cont">
@@ -37,7 +51,7 @@ function ArticleContainer() {
       <div className="article-content">
         <h1>Introduction</h1>
 
-        <p class="intro">
+        <p className="intro">
           We live in a world that glorifies "hustle culture"—where busyness is
           worn like a badge of honor. But what if the secret to true
           productivity isn't doing more, but doing less with greater intention?
@@ -102,7 +116,7 @@ function ArticleContainer() {
   );
 }
 
-function FeaturedArticles () {
+function FeaturedArticles (data) {
     return(
         <div className="featured-articles-cont">
             <SameAuthorArticles />

@@ -20,7 +20,7 @@ function App() {
         <Route path="/my-blogs" element={<Protected><MyBlogs /></Protected>} />
         <Route path="/write" element={<Protected><Write /></Protected>} />
         <Route path="/my-profile" element={<Protected><MyProfile /></Protected>} />
-        <Route path="/article" element={<Protected><Article /></Protected>} />
+        <Route path="/blogs/:blogId" element={<Protected><Article /></Protected>} />
       </Routes>
     </>
   )
