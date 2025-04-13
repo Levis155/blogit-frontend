@@ -59,3 +59,12 @@ label{
     color: gray;
     font-size: 1.4rem;
 }
+.publish-btn{    
+    padding: 1rem 2rem;
+    border: 1px solid var(--brown-color);
+    background-color: transparent;
+    color: var(--brown-color);
+    text-transform: uppercase;
+    margin-top: 2rem;
+    cursor: pointer;
+}
