@@ -34,7 +34,7 @@ function MyBlogsCard({cardImg, cardTitle, publicationDate, cardExcerpt, to, id, 
   const {isPending, mutate} = useMutation({
     mutationKey: ["delete-a-blog"],
     mutationFn: async () => {
-      const response = await axios.delete(`http://localhost:3000/blogs/${id}`, {withCredentials: true});
+      const response = await axios.delete(`${apiUrl}/blogs/${id}`, {withCredentials: true});
       return response.data;
     },
     onSuccess: () => {

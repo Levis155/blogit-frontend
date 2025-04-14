@@ -18,7 +18,7 @@ function EditBlogSection() {
     const {isLoading, data, isError, error} = useQuery({
         queryKey: ["get-blog-for-update"],
         queryFn: async () => {
-          const response = await axios.get(`http://localhost:3000/blogs/${blogId}`, {withCredentials: true})
+          const response = await axios.get(`${apiUrl}/blogs/${blogId}`, {withCredentials: true})
           console.log(response.data);
           return response.data;
         }

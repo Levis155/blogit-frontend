@@ -27,7 +27,7 @@ function SignupCard() {
     const { isPending, mutate } = useMutation({
         mutationKey: ["register-user"],
         mutationFn: async () => {
-            const response = await axios.post(`http://localhost:3000/auth/register`, {firstName, lastName, emailAddress, userName, password})
+            const response = await axios.post(`${apiUrl}/auth/register`, {firstName, lastName, emailAddress, userName, password})
             return response.data;
         },
         onSuccess: () => {
