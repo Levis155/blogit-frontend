@@ -4,7 +4,7 @@ import ArticleSection from "../Components/ArticleSection/ArticleSection";
 function Article() {
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       <ArticleSection />
     </div>
   )

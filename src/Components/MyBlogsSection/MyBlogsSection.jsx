@@ -1,23 +1,33 @@
 import "./MyBlogsSection.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { Tooltip } from 'react-tooltip';
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { MdModeEditOutline } from "react-icons/md";
 import blogsListingImg from "../../assets/blogs-listing-img.jpg";
+import apiUrl from "../../utils/apiUrl";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 function MyBlogsSection() {
+
+  const { isLoading, data } = useQuery({
+    queryKey: ["fetch-all-blogs-by-user"],
+    queryFn: async () => {
+      const response = await axios.get(`http://localhost:3000/blogs`, {withCredentials: true})
+      console.log(response);
+      return response.data;
+    }
+  })
+
   return (
     <section className="my-blogs-section">
       <NavLink to="/write" className="create-new-link">create new blog</NavLink>
-      <MyBlogsCard cardImg={blogsListingImg} cardTitle="The Unhurried Life: Why Slowing Down Makes You More Productive" publicationDate="11 April 2025" cardExcerpt="We chase efficiency, yet burnout follows. What if doing less—but with more focus—is the real key to success? Research and real-world stories reveal how slowing down can sharpen your mind, deepen relationships, and even boost creativity" />
-      <MyBlogsCard cardImg={blogsListingImg} cardTitle="The Unhurried Life: Why Slowing Down Makes You More Productive" publicationDate="11 April 2025" cardExcerpt="We chase efficiency, yet burnout follows. What if doing less—but with more focus—is the real key to success? Research and real-world stories reveal how slowing down can sharpen your mind, deepen relationships, and even boost creativity" />
-      <MyBlogsCard cardImg={blogsListingImg} cardTitle="The Unhurried Life: Why Slowing Down Makes You More Productive" publicationDate="11 April 2025" cardExcerpt="We chase efficiency, yet burnout follows. What if doing less—but with more focus—is the real key to success? Research and real-world stories reveal how slowing down can sharpen your mind, deepen relationships, and even boost creativity" />
-      <MyBlogsCard cardImg={blogsListingImg} cardTitle="The Unhurried Life: Why Slowing Down Makes You More Productive" publicationDate="11 April 2025" cardExcerpt="We chase efficiency, yet burnout follows. What if doing less—but with more focus—is the real key to success? Research and real-world stories reveal how slowing down can sharpen your mind, deepen relationships, and even boost creativity" />
+      {data && data.map((item) => <MyBlogsCard key={item.id} data={data} cardImg={blogsListingImg} cardTitle={item.title} publicationDate="11 april 2025" cardExcerpt={item.excerpt} to={`/edit-blog/${item.id}`} />)}
     </section>
   )
 }
 
-function MyBlogsCard({cardImg, cardTitle, publicationDate, cardExcerpt}) {
+function MyBlogsCard({cardImg, cardTitle, publicationDate, cardExcerpt, to, data}) {
   return (
     <div className="my-blogs-card">
       <div className="my-blogs-card-img">
@@ -30,7 +40,7 @@ function MyBlogsCard({cardImg, cardTitle, publicationDate, cardExcerpt}) {
         <p className="my-blogs-card-excerpt">{cardExcerpt}</p>
 
         <div className="my-blogs-card-btns">
-          <button><MdModeEditOutline data-tooltip-id="my-tooltip" data-tooltip-content="Edit Blog"/></button>
+          <Link to={to}><MdModeEditOutline data-tooltip-id="my-tooltip" data-tooltip-content="Edit Blog"/></Link>
           <button><RiDeleteBin5Line data-tooltip-id="my-tooltip" data-tooltip-content="Delete Blog"/></button>
           <Tooltip id="my-tooltip" />
         </div>

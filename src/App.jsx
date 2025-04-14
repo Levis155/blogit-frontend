@@ -7,6 +7,7 @@ import MyBlogs from "./Pages/MyBlogs";
 import MyProfile from "./Pages/MyProfile";
 import Signup from "./Pages/Signup";
 import Write from "./Pages/Write";
+import EditBlog from "./Pages/EditBlog";
 import Protected from "./Components/Protected/Protected";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/all-blogs" element={<Protected><AllBlogs /></Protected>} />
         <Route path="/my-blogs" element={<Protected><MyBlogs /></Protected>} />
         <Route path="/write" element={<Protected><Write /></Protected>} />
+        <Route path="/edit-blog/:blogId" element={<Protected><EditBlog /></Protected>} />
         <Route path="/my-profile" element={<Protected><MyProfile /></Protected>} />
         <Route path="/blogs/:blogId" element={<Protected><Article /></Protected>} />
       </Routes>

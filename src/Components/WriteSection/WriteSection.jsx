@@ -16,7 +16,7 @@ function WriteSection() {
   const {isPending, mutate} = useMutation({
     mutationKey: [],
     mutationFn: async () => {
-      const response = await axios.post(`${apiUrl}/blogs`, {title, excerpt}, {withCredentials: true})
+      const response = await axios.post(`http://localhost:3000/blogs`, {title, excerpt}, {withCredentials: true})
       return response.data;
     },
     onSuccess: (data) => {
