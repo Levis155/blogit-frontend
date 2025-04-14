@@ -5,7 +5,7 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { MdModeEditOutline } from "react-icons/md";
 import blogsListingImg from "../../assets/blogs-listing-img.jpg";
 import apiUrl from "../../utils/apiUrl";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
 function MyBlogsSection() {
@@ -22,12 +22,30 @@ function MyBlogsSection() {
   return (
     <section className="my-blogs-section">
       <NavLink to="/write" className="create-new-link">create new blog</NavLink>
-      {data && data.map((item) => <MyBlogsCard key={item.id} data={data} cardImg={blogsListingImg} cardTitle={item.title} publicationDate="11 april 2025" cardExcerpt={item.excerpt} to={`/edit-blog/${item.id}`} />)}
+      {data && data.map((item) => <MyBlogsCard key={item.id} data={data} cardImg={blogsListingImg} cardTitle={item.title} publicationDate="11 april 2025" cardExcerpt={item.excerpt} to={`/edit-blog/${item.id}`} id={item.id} />)}
     </section>
   )
 }
 
-function MyBlogsCard({cardImg, cardTitle, publicationDate, cardExcerpt, to, data}) {
+function MyBlogsCard({cardImg, cardTitle, publicationDate, cardExcerpt, to, id, data}) {
+
+  const queryClient = useQueryClient();
+
+  const {isPending, mutate} = useMutation({
+    mutationKey: ["delete-a-blog"],
+    mutationFn: async () => {
+      const response = await axios.delete(`http://localhost:3000/blogs/${id}`, {withCredentials: true});
+      return response.data;
+    },
+    onSuccess: () => {
+      console.log("Deleted blog successfully.");
+      queryClient.invalidateQueries({queryKey: ["fetch-all-blogs-by-user"]})
+    }
+  })
+
+  function handleDelete() {
+    mutate();
+  }
   return (
     <div className="my-blogs-card">
       <div className="my-blogs-card-img">
@@ -41,7 +59,7 @@ function MyBlogsCard({cardImg, cardTitle, publicationDate, cardExcerpt, to, data
 
         <div className="my-blogs-card-btns">
           <Link to={to}><MdModeEditOutline data-tooltip-id="my-tooltip" data-tooltip-content="Edit Blog"/></Link>
-          <button><RiDeleteBin5Line data-tooltip-id="my-tooltip" data-tooltip-content="Delete Blog"/></button>
+          <button onClick={handleDelete} disabled={isPending}><RiDeleteBin5Line data-tooltip-id="my-tooltip" data-tooltip-content="Delete Blog"/></button>
           <Tooltip id="my-tooltip" />
         </div>
       </div>
