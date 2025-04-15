@@ -34,4 +34,10 @@
     color: white;
     font-size: 1.6rem;
     font-family: inherit;
+    text-transform: capitalize;
+}
+
+.signup-form button:disabled{
+    background-color: lightgray;
+    color: white;
 }

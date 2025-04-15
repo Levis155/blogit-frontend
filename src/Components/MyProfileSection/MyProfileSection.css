@@ -32,6 +32,20 @@
     font-style: italic;
     text-transform: capitalize;
 }
+.upload-photo-btn{
+    color: var(--brown-color);
+    background-color:transparent;
+    border-radius: "none";
+    padding: 1rem 2rem;
+    margin-top: 1.5rem;
+    border: 1px solid var(--brown-color);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
 .profile-details-card{
     background-color: var(--white-color);
     margin-top: 2rem;
@@ -66,12 +80,12 @@
     font-weight: 500;
 }
 .profile-detail-subtitle{
-    text-transform: capitalize;
     color: gray;
 }
 .edit-profile{
     margin-top: 2rem;
     padding: 1rem 2rem;
+    width: 14rem;
     border: 1px solid var(--brown-color);
     background-color: transparent;
     color: var(--brown-color);
@@ -85,7 +99,9 @@
     font-size: 1.6rem;
     font-family: inherit;
 }
-.update-pass-btn{
+.update-pass-link{
+    display: flex;
+    width: 22rem;
     padding: 1rem 2rem;
     border: 1px solid var(--brown-color);
     background-color: transparent;

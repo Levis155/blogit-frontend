@@ -1,45 +1,57 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { format } from "date-fns";
+import { Link } from "react-router-dom";
+import { IoMdArrowRoundForward } from "react-icons/io";
 import "./ArticleSection.css";
 import articleImg from "../../assets/blogs-listing-img.jpg";
 import randomUser from "../../assets/random-user.jpg";
-import axios from "axios";
 import apiUrl from "../../utils/apiUrl";
 
 function ArticleSection() {
-  const {blogId} = useParams();
+  const { blogId } = useParams();
 
-  const {isLoading, data, isError, error} = useQuery({
+  const { data } = useQuery({
     queryKey: ["get-blog"],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:3000/blogs/${blogId}`, {withCredentials: true})
-      console.log(response.data);
+      const response = await axios.get(`${apiUrl}/blogs/${blogId}`, {
+        withCredentials: true,
+      });
       return response.data;
-    }
-  })
+    },
+  });
   return (
-    <section className="article-section">
-      <ArticleContainer data={data} />
-      <FeaturedArticles />
-    </section>
+    <div>
+      <div className="explore-link">
+        <Link to={"/all-blogs"}>
+          explore more blogs <IoMdArrowRoundForward />
+        </Link>
+      </div>
+      <section className="article-section">
+        <ArticleContainer data={data} />
+        <FeaturedArticles data={data} />
+      </section>
+    </div>
   );
 }
 
-function ArticleContainer({data}) {
+function ArticleContainer({ data }) {
   return (
     <div className="article-container">
-      <p className="article-title">
-        {data && data.title}
-      </p>
+      <p className="article-title">{data && data.title}</p>
 
       <div className="blogs-listing-author-cont">
         <div className="blogs-listing-profile-pic">
           <img src={randomUser} alt="" />
         </div>
         <div className="blogs-listing-author-details">
-          <p className="blogs-listing-author-name">John Doe</p>
+          <p className="blogs-listing-author-name">
+            {data && data.author.firstName} {data && data.author.lastName}
+          </p>
           <p className="blogs-listing-author-date">
-            Last updated: 11 April 2025
+            updated on:{" "}
+            {data && format(new Date(data.updatedAt), "dd MMMM yyyy")}
           </p>
         </div>
       </div>
@@ -116,59 +128,107 @@ function ArticleContainer({data}) {
   );
 }
 
-function FeaturedArticles (data) {
-    return(
-        <div className="featured-articles-cont">
-            <SameAuthorArticles />
-            <MoreArticles />
-        </div>
-    )
-}
-
-function SameAuthorArticles() {
-  return(
-    <div className="same-author-articles">
-        <p className="featured-articles-title">
-            more from this author
-        </p>
-
-        <FeaturedArticleCard />
-        <FeaturedArticleCard />
-        <FeaturedArticleCard />
-        <FeaturedArticleCard />
+function FeaturedArticles({ data }) {
+  return (
+    <div className="featured-articles-cont">
+      <SameAuthorArticles authorId={data && data.author.id} />
+      <MoreArticles />
     </div>
-  )
+  );
 }
 
-function MoreArticles () {
-    return(
-        <div className="more-articles">
-                    <p className="featured-articles-title">
-            more articles
-        </p>
-        <FeaturedArticleCard />
-        <FeaturedArticleCard />
-        <FeaturedArticleCard />
-        <FeaturedArticleCard />
-        </div>
-    )
+function SameAuthorArticles({ authorId }) {
+  const { isLoading, data } = useQuery({
+    queryKey: ["fetch-all-users-blogs"],
+    queryFn: async () => {
+      const response = await axios.get(`${apiUrl}/blogs/all-blogs`, {
+        withCredentials: true,
+      });
+      return response.data.allUsersBlogs;
+    },
+  });
+
+  const blogsBySameUser =
+    data?.filter((blog) => blog.authorId === authorId) || [];
+
+  return (
+    <div className="same-author-articles">
+      <p className="featured-articles-title">more from this author</p>
+
+      {blogsBySameUser.length > 0 ? (
+        blogsBySameUser.map((blog) => (
+          <FeaturedArticleCard
+            key={blog.id}
+            blogId={blog.id}
+            featuredArticleCardImage={articleImg}
+            featuredArticleCardTitle={blog.title}
+            authorUsername={blog.author.userName}
+            updateDate={format(new Date(blog.updatedAt), "dd MMMM yyyy")}
+          />
+        ))
+      ) : (
+        <p>No other articles from this author</p>
+      )}
+    </div>
+  );
 }
 
-function FeaturedArticleCard () {
-    return (
-        <div className="featured-article-card">
+function MoreArticles() {
+  const { isLoading, data } = useQuery({
+    queryKey: ["fetch-all-users-blogs"],
+    queryFn: async () => {
+      const response = await axios.get(`${apiUrl}/blogs/all-blogs`, {
+        withCredentials: true,
+      });
+      return response.data.allUsersBlogs;
+    },
+  });
+
+  if (isLoading) return <div>Loading more articles...</div>;
+
+  const lastSevenBlogs = data?.slice(-7) || [];
+
+  return (
+    <div className="more-articles">
+      <p className="featured-articles-title">more articles</p>
+
+      {lastSevenBlogs.map((blog) => (
+        <FeaturedArticleCard
+          key={blog.id}
+          blogId={blog.id}
+          featuredArticleCardImage={articleImg}
+          featuredArticleCardTitle={blog.title}
+          authorUsername={blog.author.userName}
+          updateDate={format(new Date(blog.updatedAt), "dd MMMM yyyy")}
+        />
+      ))}
+    </div>
+  );
+}
+
+function FeaturedArticleCard({
+  blogId,
+  featuredArticleCardImage,
+  featuredArticleCardTitle,
+  authorUsername,
+  updateDate,
+}) {
+  return (
+    <Link to={`/article/${blogId}`} className="featured-article-card-link">
+      <div className="featured-article-card">
         <div className="featured-article-left">
-            <img src={articleImg} alt="" />
+          <img src={featuredArticleCardImage} alt="" />
         </div>
         <div className="featured-article-right">
-            <p className="featured-article-title">the creative power of boredom</p>
-            <div className="featured-article-details">
-                <p className="featured-article-author">Author: John Doe</p>
-                <p className="featured-article-date">Last updated: 11 April 2025</p>
-            </div>
+          <p className="featured-article-title">{featuredArticleCardTitle}</p>
+          <div className="featured-article-details">
+            <p className="featured-article-author">author: {authorUsername}</p>
+            <p className="featured-article-date">Last updated: {updateDate}</p>
+          </div>
         </div>
-    </div>
-    )
+      </div>
+    </Link>
+  );
 }
 
 export default ArticleSection;

@@ -59,7 +59,7 @@ function Header() {
         </nav>
 
         <div className="header-right-logged-in">
-          <Link to="/my-profile"><p>hello {user.username}👋🏾</p></Link>
+          <Link to="/my-profile"><p>hey {user.username}👋🏾</p></Link>
         </div>
       </header>
     );
