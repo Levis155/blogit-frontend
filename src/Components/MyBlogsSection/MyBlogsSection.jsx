@@ -24,37 +24,24 @@ function MyBlogsSection() {
 
   return (
     <section className="my-blogs-section">
-      {isLoading && (
-        <div className="loader-container">
-          <PulseLoader size={30} color="#4b1e09" />
-        </div>
-      )}
       {isError && (
         <div className="error-container">
           <h1>error getting blogs.</h1>
         </div>
       )}
-      {(!data || data.length === 0) && (
+
+      {!isLoading && (!data || data.length === 0) ? (
         <div className="start-writing">
           <h1>You don't have any blogs yet.</h1>
           <NavLink to="/write" className="create-new-link">
             Start writing
           </NavLink>
         </div>
-      )}
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
-      {data && data.length > 0 && (
+      ) : isLoading ? (
+        <div className="loader-container">
+          <PulseLoader size={30} color="#4b1e09" />
+        </div>
+      ) : (
         <>
           <NavLink to="/write" className="create-new-link">
             create new blog
@@ -73,6 +60,18 @@ function MyBlogsSection() {
           ))}
         </>
       )}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </section>
   );
 }
