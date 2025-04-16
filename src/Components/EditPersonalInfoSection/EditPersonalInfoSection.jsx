@@ -2,6 +2,7 @@ import { TextField, Alert } from "@mui/material";
 import "./EditPersonalInfoSection.css"
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import useUserStore from "../../stores/userStore";
@@ -10,6 +11,18 @@ import apiUrl from "../../utils/apiUrl";
 function EditPersonalInfoSection() {
     return (
       <section className="edit-personal-section">
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+              />
           <EditPersonalCard />
       </section>
     )
@@ -34,7 +47,17 @@ function EditPersonalInfoSection() {
           console.log(response)
         },
         onSuccess: () => {
-          navigate(`/my-profile`);
+                toast.success("Your personal details were updated successfully. Redirecting to profile page.", {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "colored",
+                });
+                setTimeout(() => navigate("/my-profile"), 3000);
         },
         onError: (error) => {
           if(axios.isAxiosError(error)) {
@@ -63,6 +86,12 @@ function EditPersonalInfoSection() {
               <div className="edit-personal-title-cont">
                   <p className="edit-personal-main-title">Edit your personal information</p>
               </div>
+
+                    {formError && (
+                      <Alert severity="error" sx={{ mb: "1rem", fontSize: "1.4rem" }}>
+                        {formError}
+                      </Alert>
+                    )}
 
               <TextField value={firstName} onChange={e => setFirstName(e.target.value)} variant="standard" label="First Name" required sx={{mb:"2rem","& .MuiInputBase-input": { fontSize: "1.8rem" },"& .MuiInputLabel-root": { fontSize: "1.8rem" },}}  />
               <TextField value={lastName} onChange={e => setLastName(e.target.value)} variant="standard" label="Last Name" required sx={{mb:"2rem","& .MuiInputBase-input": { fontSize: "1.8rem" },"& .MuiInputLabel-root": { fontSize: "1.8rem" },}} />
