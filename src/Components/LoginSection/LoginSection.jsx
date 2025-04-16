@@ -42,7 +42,7 @@ function LoginCard() {
       const response = await axios.post(
         `${apiUrl}/auth/login`,
         { identifier, password },
-        { withCredentials: true }
+        {withCredentials: true}
       );
       return response.data;
     },

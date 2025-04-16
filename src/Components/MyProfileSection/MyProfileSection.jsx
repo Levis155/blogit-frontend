@@ -1,21 +1,32 @@
-import "./MyProfileSection.css"
-import randomUser from "../../assets/random-user.jpg";
 import { MdModeEditOutline } from "react-icons/md";
 import { Link } from "react-router-dom"
 import { format } from 'date-fns';
 import { FaCamera } from "react-icons/fa";
-import useUserStore from "../../stores/userStore";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
+import apiUrl from "../../utils/apiUrl";
+import "./MyProfileSection.css"
+import randomUser from "../../assets/random-user.jpg";
+
 
 function MyProfileSection() {
-  const user = useUserStore((state) => state.user)
-  console.log(user)
-
+  const { isLoading, isError, data, error } = useQuery({
+    queryKey: ["fetch-user-info"],
+    queryFn: async () => {
+      const response = await axios.get(`${apiUrl}/profile`, {
+        withCredentials: true,
+      });
+      return response.data;
+    },
+  });
+  console.log(data);
+  console.log(error);
 
   return (
     <section className="my-profile-section">
-      <MyProfileHeader profilePicUrl={randomUser} firstName={user && user.firstName} lastName={user && user.lastName} joinDate={user && user.createdAt} />
-      <PersonalDetailsCard />
-      <ProfileDetailsCard />
+      <MyProfileHeader profilePicUrl={randomUser} firstName={data && data.firstName} lastName={data && data.lastName} joinDate={data && data.createdAt} />
+      <PersonalDetailsCard data={data} />
+      <ProfileDetailsCard data={data} />
       <Link to="/edit-password" className="update-pass-link"><MdModeEditOutline /> update password</Link>
     </section>
   )
@@ -47,35 +58,32 @@ function MyProfileHeader({ profilePicUrl, firstName, lastName, joinDate }) {
   );
 }
 
-function ProfileDetailsCard() {
-  const user = useUserStore((state) => state.user)
-  return(
-    <div className="profile-details-card">
-      <p className="profile-details-title">profile information</p>
-      <div className="profile-detail-cont">
-        <ProfileDetail detailTitle="phone number" detailSubtitle={user?.phoneNumber || "----"} />
-        <ProfileDetail detailTitle="occupation" detailSubtitle={user?.occupation || "----"}/>
-        <ProfileDetail detailTitle="bio" detailSubtitle={user?.bio || "----"}/>
-        <ProfileDetail detailTitle="secondary email" detailSubtitle={user?.secondaryEmail || "----"}/>
-      </div>
-      <Link className="edit-profile" to="/edit-profile-info"><MdModeEditOutline /> update</Link>
-    </div>
-  )
-}
-
-function PersonalDetailsCard() {
-  const user = useUserStore((state) => state.user)
-
+function PersonalDetailsCard({data}) {
   return(
     <div className="profile-details-card">
       <p className="profile-details-title">personal information</p>
       <div className="profile-detail-cont">
-        <ProfileDetail detailTitle="first name" detailSubtitle={user?.firstName || "----"}/>
-        <ProfileDetail detailTitle="last name" detailSubtitle={user?.lastName || "----"}/>
-        <ProfileDetail detailTitle="email address" detailSubtitle={user?.emailAddress || "----"}/>
-        <ProfileDetail detailTitle="username" detailSubtitle={user?.username || "----"}/>
+        <ProfileDetail detailTitle="first name" detailSubtitle={data && data.firstName}/>
+        <ProfileDetail detailTitle="last name" detailSubtitle={data && data.lastName}/>
+        <ProfileDetail detailTitle="email address" detailSubtitle={data && data.emailAddress}/>
+        <ProfileDetail detailTitle="username" detailSubtitle={data && data.userName}/>
       </div>
       <Link to="/edit-personal-info" className="edit-profile"><MdModeEditOutline /> update</Link>
+    </div>
+  )
+}
+
+function ProfileDetailsCard({data}) {
+  return(
+    <div className="profile-details-card">
+      <p className="profile-details-title">profile information</p>
+      <div className="profile-detail-cont">
+        <ProfileDetail detailTitle="phone number" detailSubtitle={data?.phoneNumber || "----"} />
+        <ProfileDetail detailTitle="occupation" detailSubtitle={data?.occupation || "----"}/>
+        <ProfileDetail detailTitle="bio" detailSubtitle={data?.bio || "----"}/>
+        <ProfileDetail detailTitle="secondary email" detailSubtitle={data?.secondaryEmail || "----"}/>
+      </div>
+      <Link className="edit-profile" to="/edit-profile-info"><MdModeEditOutline /> update</Link>
     </div>
   )
 }
