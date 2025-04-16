@@ -12,7 +12,7 @@ import "./MyBlogsSection.css";
 import apiUrl from "../../utils/apiUrl";
 
 function MyBlogsSection() {
-  const { isLoading, isError, data } = useQuery({
+  const { isLoading, isError, data, error } = useQuery({
     queryKey: ["fetch-all-blogs-by-user"],
     queryFn: async () => {
       const response = await axios.get(`${apiUrl}/blogs`, {
@@ -24,24 +24,28 @@ function MyBlogsSection() {
 
   return (
     <section className="my-blogs-section">
+      {isLoading && (
+        <div className="loader-container">
+          <PulseLoader size={30} color="#4b1e09" />
+        </div>
+      )}
+
       {isError && (
         <div className="error-container">
           <h1>error getting blogs.</h1>
         </div>
       )}
 
-      {!isLoading && (!data || data.length === 0) ? (
+      {!isLoading && !isError && data.length === 0 && (
         <div className="start-writing">
           <h1>You don't have any blogs yet.</h1>
           <NavLink to="/write" className="create-new-link">
             Start writing
           </NavLink>
         </div>
-      ) : isLoading ? (
-        <div className="loader-container">
-          <PulseLoader size={30} color="#4b1e09" />
-        </div>
-      ) : (
+      )}
+
+      {!isLoading && !isError && data.length > 0 && (
         <>
           <NavLink to="/write" className="create-new-link">
             create new blog

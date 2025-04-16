@@ -9,7 +9,7 @@ import randomUser from "../../assets/random-user.jpg";
 import apiUrl from "../../utils/apiUrl";
 
 function BlogsListingSection() {
-  const { isLoading, isError, data } = useQuery({
+  const { isLoading, isError, data, error } = useQuery({
     queryKey: ["fetch-all-blogs"],
     queryFn: async () => {
       const response = await axios.get(`${apiUrl}/blogs/all-blogs`, {
