@@ -1,21 +1,26 @@
 import { MdModeEditOutline } from "react-icons/md";
 import { Link } from "react-router-dom"
-import { format } from 'date-fns';
+import { format, set } from 'date-fns';
 import { FaCamera } from "react-icons/fa";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import apiUrl from "../../utils/apiUrl";
-import "./MyProfileSection.css"
+import "./MyProfileSection.css";
+import useUserStore from "../../stores/userStore";
 import randomUser from "../../assets/random-user.jpg";
 
 
 function MyProfileSection() {
+
+    const setUserInformation = useUserStore((state) => state.setUserInfo);
+
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ["fetch-user-info"],
     queryFn: async () => {
       const response = await axios.get(`${apiUrl}/profile`, {
         withCredentials: true,
       });
+      setUserInformation(response.data)
       return response.data;
     },
   });

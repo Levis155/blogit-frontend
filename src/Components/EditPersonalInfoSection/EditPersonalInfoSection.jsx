@@ -35,7 +35,7 @@ function EditPersonalInfoSection() {
     const [firstName, setFirstName] = useState(user.firstName);
     const [lastName, setLastName] = useState(user.lastName);
     const [emailAddress, setEmailAddress] = useState(user.emailAddress);
-    const [userName, setUserName] = useState(user.username);
+    const [userName, setUserName] = useState(user.userName);
     const [formError, setFormError] = useState(null);
     const navigate = useNavigate();
 
