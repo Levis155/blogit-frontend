@@ -28,10 +28,18 @@ function BlogsListingSection() {
       )}
       {isError && (
         <div className="error-container">
-          <h1>error getting blogs.</h1>
+          <h1>{error ? error : "Something went wrong."}</h1>
         </div>
       )}
-      {data &&
+      {!isError && !isLoading && data.length === 0 && (
+        <div className="no-blogs">
+          <h1>No blogs yet.</h1>
+        </div>
+      )}
+
+      {!isError &&
+        !isLoading &&
+        data.length > 0 &&
         data.map((item) => (
           <BlogsListingCard
             key={item.id}

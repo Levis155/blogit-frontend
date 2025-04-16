@@ -66,7 +66,7 @@
     padding: 1rem;
     text-transform: capitalize;
 }
-.loader-container, .error-container{
+.loader-container, .error-container, .no-blogs{
     width: 100vw;
     height: 30rem;
     display: flex;
@@ -75,7 +75,7 @@
     justify-content: center;
     align-items: center;
 }
-.error-container h1{
+.error-container h1, .no-blogs h1{
     color: var(--brown-color);
     text-transform: capitalize;
 }
