@@ -4,7 +4,6 @@
   grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
   row-gap: 3rem;
-  width: 100vw;
 }
 .blogs-listing-card {
   background-color: var(--white-color);
@@ -70,7 +69,7 @@
 .loader-container,
 .error-container,
 .no-blogs {
-  width: 100%;
+  width: 100vw;
   height: 30rem;
   display: flex;
   flex-direction: column;
