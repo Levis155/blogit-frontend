@@ -1,9 +1,7 @@
-import EditPersonalInfoSection from "../Components/EditPersonalInfoSection/EditPersonalInfoSection"
+import EditPersonalInfoSection from "../Components/EditPersonalInfoSection/EditPersonalInfoSection";
 
 function EditPersonalInfo() {
-  return (
-    <EditPersonalInfoSection />
-  )
+  return <EditPersonalInfoSection />;
 }
 
-export default EditPersonalInfo
+export default EditPersonalInfo;

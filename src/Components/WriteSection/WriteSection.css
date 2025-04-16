@@ -1,70 +1,71 @@
-.write-section{
-    display: flex;
-    justify-content: center;
-    padding-top: 5rem;
+.write-section {
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
 }
-.write-form{
-    width: 70%;
-    background-color: white;
-    padding: 2rem;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+.write-form {
+  width: 70%;
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
 }
-.write-form-title{
-    font-size: 3rem;
-    font-weight: 800;
-    text-transform: capitalize;
-    color: var(--brown-color);
-    margin-bottom: 2rem;
+.write-form-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: capitalize;
+  color: var(--brown-color);
+  margin-bottom: 2rem;
 }
-.title-input, .excerpt-input{
-    display: flex;
-    flex-direction: column;
-    gap: .3rem;
-    width: 100%;
-    margin-bottom: 1.5rem;
+.title-input,
+.excerpt-input,
+.img-input-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
 }
-label{
-    text-transform: capitalize;
-    font-weight: 500;
-    color: gray;
+label {
+  text-transform: capitalize;
+  font-weight: 500;
+  color: gray;
 }
-.title-input input{
-    width: 100%;
-    height: 5rem;
-    border: 1px solid var(--brown-color);
-    padding: 1rem;
-    font-size: 1.6rem;
-    outline: none;
-    /* background-color: var(--gray-x-light); */
-    font-family: inherit;
-}
-
-.title-input input::placeholder{
-    color: gray;
-    font-size: 1.4rem;
+.title-input input {
+  width: 100%;
+  height: 5rem;
+  border: 1px solid var(--brown-color);
+  padding: 1rem;
+  font-size: 1.6rem;
+  outline: none;
+  font-family: inherit;
 }
 
-.excerpt-input textarea{
-    width: 100%;
-    height: 15rem;
-    border: 1px solid var(--brown-color);
-    padding: 1rem;
-    font-size: 1.6rem;
-    outline: none;
-    /* background-color: var(--gray-x-light); */
-    font-family: inherit;
-    resize: vertical;
+.title-input input::placeholder {
+  color: gray;
+  font-size: 1.4rem;
 }
-.excerpt-input textarea::placeholder{
-    color: gray;
-    font-size: 1.4rem;
+
+.excerpt-input textarea {
+  width: 100%;
+  height: 15rem;
+  border: 1px solid var(--brown-color);
+  padding: 1rem;
+  font-size: 1.6rem;
+  outline: none;
+  /* background-color: var(--gray-x-light); */
+  font-family: inherit;
+  resize: vertical;
 }
-.publish-btn{    
-    padding: 1rem 2rem;
-    border: 1px solid var(--brown-color);
-    background-color: transparent;
-    color: var(--brown-color);
-    text-transform: uppercase;
-    margin-top: 2rem;
-    cursor: pointer;
+.excerpt-input textarea::placeholder {
+  color: gray;
+  font-size: 1.4rem;
+}
+.publish-btn {
+  padding: 1rem 2rem;
+  border: 1px solid var(--brown-color);
+  background-color: transparent;
+  color: var(--brown-color);
+  text-transform: uppercase;
+  margin-top: 2rem;
+  cursor: pointer;
 }

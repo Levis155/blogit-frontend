@@ -59,7 +59,9 @@ function Header() {
         </nav>
 
         <div className="header-right-logged-in">
-          <Link to="/my-profile"><p>hey {user.userName}👋🏾</p></Link>
+          <Link to="/my-profile">
+            <p>hey {user.userName}👋🏾</p>
+          </Link>
         </div>
       </header>
     );

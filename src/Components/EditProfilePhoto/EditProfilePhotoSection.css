@@ -1,4 +1,4 @@
-.edit-password-section {
+.edit-profile-photo-section {
   background-color: var(--light-pink);
   width: 100%;
   height: 100vh;
@@ -6,36 +6,45 @@
   justify-content: center;
   align-items: center;
 }
-.edit-password-form {
+.edit-profile-photo-container {
   width: 40%;
   padding: 2rem;
   background-color: var(--white-color);
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
 }
-.edit-password-title-cont {
-  margin-bottom: 1.4rem;
-}
-.edit-password-main-title {
+.icon-cont {
+  border: 3px solid var(--brown-color);
   color: var(--brown-color);
-  font-size: 3.5rem;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+}
+.upload-title {
+  font-size: 2.2rem;
   font-weight: 800;
   text-transform: capitalize;
+  color: var(--brown-color);
 }
-.edit-password-subtitle a {
-  color: var(--orange-color);
-}
-.edit-password-form button {
-  padding: 1.2rem 0rem;
+.save-profile-pic-btn {
+  padding: 1rem 2rem;
+  width: 100%;
   cursor: pointer;
   border: none;
   background-color: var(--brown-color);
   color: white;
   font-size: 1.6rem;
   font-family: inherit;
+  text-transform: capitalize;
 }
-.edit-password-form button:disabled {
+.save-profile-pic-btn:disabled {
   background-color: lightgray;
   color: white;
 }

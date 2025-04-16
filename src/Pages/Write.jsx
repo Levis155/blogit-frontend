@@ -1,5 +1,5 @@
-import Header from "../Components/Header/Header"
-import WriteSection from "../Components/WriteSection/WriteSection"
+import Header from "../Components/Header/Header";
+import WriteSection from "../Components/WriteSection/WriteSection";
 
 function Write() {
   return (
@@ -7,7 +7,7 @@ function Write() {
       <Header />
       <WriteSection />
     </div>
-  )
+  );
 }
 
-export default Write
+export default Write;

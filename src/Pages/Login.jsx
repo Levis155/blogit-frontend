@@ -1,11 +1,11 @@
-import LoginSection from "../Components/LoginSection/LoginSection"
+import LoginSection from "../Components/LoginSection/LoginSection";
 
 function Login() {
   return (
     <div>
       <LoginSection />
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

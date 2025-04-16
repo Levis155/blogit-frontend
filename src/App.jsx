@@ -11,6 +11,7 @@ import EditBlog from "./Pages/EditBlog";
 import EditProfileInfo from "./Pages/EditProfileInfo";
 import EditPersonalInfo from "./Pages/EditPersonalInfo";
 import EditPassword from "./Pages/EditPassword";
+import EditProfilePhoto from "./Pages/EditProfilePhoto";
 import Protected from "./Components/Protected/Protected";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/edit-personal-info" element={<Protected><EditPersonalInfo /></Protected>} />
         <Route path="/edit-profile-info" element={<Protected><EditProfileInfo /></Protected>} />
         <Route path="/edit-password" element={<Protected><EditPassword /></Protected>} />
+        <Route path="/edit-profile-photo" element={<Protected><EditProfilePhoto /></Protected>} />
       </Routes>
     </>
   )

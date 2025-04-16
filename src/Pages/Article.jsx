@@ -5,7 +5,7 @@ function Article() {
     <div>
       <ArticleSection />
     </div>
-  )
+  );
 }
 
-export default Article
+export default Article;

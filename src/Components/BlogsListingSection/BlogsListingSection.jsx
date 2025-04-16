@@ -4,9 +4,9 @@ import axios from "axios";
 import { format } from "date-fns";
 import PulseLoader from "react-spinners/PulseLoader";
 import "./BlogsListingSection.css";
-import blogsListingImg from "../../assets/blogs-listing-img.jpg";
-import randomUser from "../../assets/random-user.jpg";
 import apiUrl from "../../utils/apiUrl";
+import avatarImagePlaceholder from "../../assets/blank-user-img.png";
+import blogImagePlaceholder from "../../assets/blank-blog-img.jpg";
 
 function BlogsListingSection() {
   const { isLoading, isError, data, error } = useQuery({
@@ -45,8 +45,10 @@ function BlogsListingSection() {
             key={item.id}
             blogId={item.id}
             data={data}
-            blogsListingCardImg={blogsListingImg}
-            blogsListingProfilePic={randomUser}
+            blogsListingCardImg={item?.blogImageUrl || blogImagePlaceholder}
+            blogsListingProfilePic={
+              item.author?.profilePhotoUrl || avatarImagePlaceholder
+            }
             blogsListingFirstName={item.author.firstName}
             blogsListingLastName={item.author.lastName}
             blogsListingAuthorDate={item.updatedAt}
@@ -72,7 +74,7 @@ function BlogsListingCard({
   return (
     <div className="blogs-listing-card">
       <div className="blogs-listing-card-top">
-        <img src={blogsListingCardImg} alt="" />
+        <img src={blogsListingCardImg} alt="blog image" />
       </div>
       <div className="blogs-listing-card-bottom">
         <div className="blogs-listing-author-cont">

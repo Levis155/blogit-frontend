@@ -1,5 +1,5 @@
-import Header from "../Components/Header/Header"
-import HeroSection from "../Components/HeroSection/HeroSection"
+import Header from "../Components/Header/Header";
+import HeroSection from "../Components/HeroSection/HeroSection";
 
 function HomePage() {
   return (
@@ -7,7 +7,7 @@ function HomePage() {
       <Header />
       <HeroSection />
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;

@@ -35,3 +35,7 @@
     font-size: 1.6rem;
     font-family: inherit;
 }
+.edit-profile-form button:disabled{
+    background-color: lightgray;
+    color: white;
+}

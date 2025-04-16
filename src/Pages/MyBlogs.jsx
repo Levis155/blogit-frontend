@@ -7,7 +7,7 @@ function MyBlogs() {
       <Header />
       <MyBlogsSection />
     </div>
-  )
+  );
 }
 
-export default MyBlogs
+export default MyBlogs;

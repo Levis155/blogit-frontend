@@ -1,5 +1,5 @@
-import BlogsListingSection from "../Components/BlogsListingSection/BlogsListingSection"
-import Header from "../Components/Header/Header"
+import BlogsListingSection from "../Components/BlogsListingSection/BlogsListingSection";
+import Header from "../Components/Header/Header";
 
 function AllBlogs() {
   return (
@@ -7,7 +7,7 @@ function AllBlogs() {
       <Header />
       <BlogsListingSection />
     </div>
-  )
+  );
 }
 
-export default AllBlogs
+export default AllBlogs;

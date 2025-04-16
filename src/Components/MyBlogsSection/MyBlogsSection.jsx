@@ -7,9 +7,9 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { MdModeEditOutline } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import PulseLoader from "react-spinners/PulseLoader";
-import blogsListingImg from "../../assets/blogs-listing-img.jpg";
 import "./MyBlogsSection.css";
 import apiUrl from "../../utils/apiUrl";
+import blogImagePlaceholder from "../../assets/blank-blog-img.jpg";
 
 function MyBlogsSection() {
   const { isLoading, isError, data, error } = useQuery({
@@ -54,7 +54,7 @@ function MyBlogsSection() {
             <MyBlogsCard
               key={item.id}
               data={data}
-              cardImg={blogsListingImg}
+              cardImg={item?.blogImageUrl || blogImagePlaceholder}
               cardTitle={item.title}
               publicationDate={item.createdAt}
               cardExcerpt={item.excerpt}

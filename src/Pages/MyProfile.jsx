@@ -7,7 +7,7 @@ function MyProfile() {
       <Header />
       <MyProfileSection />
     </div>
-  )
+  );
 }
 
-export default MyProfile
+export default MyProfile;

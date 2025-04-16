@@ -5,13 +5,13 @@ import { Alert } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "./EditBlogSection.css";
-import ImageUploader from "../ImageUploader/ImageUploader";
 import apiUrl from "../../utils/apiUrl";
 
 function EditBlogSection() {
   const { blogId } = useParams();
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
+  const [blogImageUrl, setBlogImageUrl] = useState("");
   const [formError, setFormError] = useState(null);
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ function EditBlogSection() {
     mutationFn: async () => {
       const response = await axios.patch(
         `${apiUrl}/blogs/${blogId}`,
-        { title, excerpt },
+        { title, excerpt, blogImageUrl },
         { withCredentials: true }
       );
     },
@@ -70,7 +70,7 @@ function EditBlogSection() {
   function handleSave(e) {
     e.preventDefault();
     setFormError(null);
-    if (!title || !excerpt) {
+    if (!title || !excerpt || !blogImageUrl) {
       setFormError("All fields are required.");
       return;
     }
@@ -98,7 +98,33 @@ function EditBlogSection() {
             {formError}
           </Alert>
         )}
-        <ImageUploader />
+        <div className="img-input-cont">
+          <label>Upload new blog image</label>
+          <input
+            type="file"
+            className="image-uploader"
+            onChange={async (e) => {
+              const file = e.target.files[0];
+              if (!file) return;
+
+              const data = new FormData();
+              data.append("file", file);
+              data.append("upload_preset", "upload_blogit_images");
+              data.append("cloud_name", "dhktfy1xm");
+
+              const response = await fetch(
+                "https://api.cloudinary.com/v1_1/dhktfy1xm/image/upload",
+                {
+                  method: "POST",
+                  body: data,
+                }
+              );
+
+              const uploadedImageURL = await response.json();
+              setBlogImageUrl(uploadedImageURL.url);
+            }}
+          />
+        </div>
         <TitleInput
           value={title}
           onChange={(e) => setTitle(e.target.value)}
