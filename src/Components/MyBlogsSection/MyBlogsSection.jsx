@@ -32,7 +32,7 @@ function MyBlogsSection() {
 
       {isError && (
         <div className="error-container">
-          <h1>{error ? error : "Something went wrong."}</h1>
+          <h1>error getting your blogs.</h1>
         </div>
       )}
 

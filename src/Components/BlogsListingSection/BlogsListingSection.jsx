@@ -28,7 +28,7 @@ function BlogsListingSection() {
       )}
       {isError && (
         <div className="error-container">
-          <h1>{error ? error : "Something went wrong."}</h1>
+          <h1>error getting blogs.</h1>
         </div>
       )}
       {!isError && !isLoading && data.length === 0 && (
