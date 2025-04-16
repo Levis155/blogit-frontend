@@ -4,6 +4,7 @@
   grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
   row-gap: 3rem;
+  width: 100vw;
 }
 .blogs-listing-card {
   background-color: var(--white-color);
