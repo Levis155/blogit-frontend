@@ -22,12 +22,12 @@ function BlogsListingSection() {
   return (
     <section className="blogs-listing-section">
       {isLoading && (
-        <div className="loader-container">
+        <div className="blogs-listing-loader-container">
           <PulseLoader size={30} color="#4b1e09" />
         </div>
       )}
       {isError && (
-        <div className="error-container">
+        <div className="blogs-listing-error-container">
           <h1>error getting blogs.</h1>
         </div>
       )}

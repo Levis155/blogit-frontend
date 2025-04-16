@@ -56,8 +56,8 @@
   color: var(--brown-color);
 }
 .start-writing,
-.loader-container,
-.error-container {
+.my-blogs-loader-container,
+.my-blogs-error-container {
   width: 100%;
   height: 30rem;
   display: flex;
