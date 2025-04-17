@@ -15,22 +15,19 @@ function Header() {
   ];
 
   function handleLogout() {
-          toast.success(
-            "Logging you out.",
-            {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "colored",
-              onClose: () => {
-                removeUserInfo();
-              },
-            }
-          );
+    toast.success("Logging you out.", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      onClose: () => {
+        removeUserInfo();
+      },
+    });
   }
 
   if (!user) {
@@ -51,18 +48,18 @@ function Header() {
   } else {
     return (
       <header className="header-logged-in">
-              <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-              />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
         <div className="header-left-logged-in">
           <Link to="/">
             <p className="logo">Blogit</p>
