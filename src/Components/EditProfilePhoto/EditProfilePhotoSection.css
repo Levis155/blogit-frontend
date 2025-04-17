@@ -33,6 +33,16 @@
   text-transform: capitalize;
   color: var(--brown-color);
 }
+.input{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+}
+.input p{
+  color: var(--orange-color);
+  text-transform: capitalize;
+}
 .save-profile-pic-btn {
   padding: 1rem 2rem;
   width: 100%;

@@ -12,6 +12,7 @@ function WriteSection() {
   const [excerpt, setExcerpt] = useState("");
   const [blogImageUrl, setBlogImageUrl] = useState("");
   const [formError, setFormError] = useState(null);
+  const [uploadingImg, setUploadingImg] = useState("");
   const navigate = useNavigate();
 
   const { isPending, mutate } = useMutation({
@@ -83,30 +84,37 @@ function WriteSection() {
         )}
         <div className="img-input-cont">
           <label>Upload blog image</label>
-          <input
-            type="file"
-            className="image-uploader"
-            onChange={async (e) => {
-              const file = e.target.files[0];
-              if (!file) return;
+          <div className="input">
+            <p>{uploadingImg}</p>
 
-              const data = new FormData();
-              data.append("file", file);
-              data.append("upload_preset", "upload_blogit_images");
-              data.append("cloud_name", "dhktfy1xm");
+            <input
+              type="file"
+              className="image-uploader"
+              onChange={async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
 
-              const response = await fetch(
-                "https://api.cloudinary.com/v1_1/dhktfy1xm/image/upload",
-                {
-                  method: "POST",
-                  body: data,
-                }
-              );
+                setUploadingImg("uploading image please wait...");
 
-              const uploadedImageURL = await response.json();
-              setBlogImageUrl(uploadedImageURL.url);
-            }}
-          />
+                const data = new FormData();
+                data.append("file", file);
+                data.append("upload_preset", "upload_blogit_images");
+                data.append("cloud_name", "dhktfy1xm");
+
+                const response = await fetch(
+                  "https://api.cloudinary.com/v1_1/dhktfy1xm/image/upload",
+                  {
+                    method: "POST",
+                    body: data,
+                  }
+                );
+
+                const uploadedImageURL = await response.json();
+                setBlogImageUrl(uploadedImageURL.url);
+                setUploadingImg("");
+              }}
+            />
+          </div>
         </div>
         <TitleInput
           value={title}

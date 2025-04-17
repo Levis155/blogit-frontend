@@ -11,6 +11,7 @@ import "./EditProfilePhotoSection.css";
 function EditProfilePhotoSection() {
   const [profilePhotoUrl, setProfilePhotoUrl] = useState("");
   const [uploadError, setUploadError] = useState(null);
+  const [uploadingImg, setUploadingImg] = useState("");
   const navigate = useNavigate();
 
   const { isPending, mutate } = useMutation({
@@ -50,7 +51,7 @@ function EditProfilePhotoSection() {
     e.preventDefault();
     setUploadError(null);
     if (!profilePhotoUrl) {
-      setUploadError("You did not choose a photo.");
+      setUploadError("No photo was found.");
       return;
     }
     mutate();
@@ -80,30 +81,35 @@ function EditProfilePhotoSection() {
           </Alert>
         )}
         <p className="upload-title">Upload a photo of yourself.</p>
-        <input
-          type="file"
-          className="image-uploader"
-          onChange={async (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
+        <div className="input">
+          <p>{uploadingImg}</p>
+          <input
+            type="file"
+            className="image-uploader"
+            onChange={async (e) => {
+              const file = e.target.files[0];
+              if (!file) return;
+              setUploadingImg("uploading image please wait...");
 
-            const data = new FormData();
-            data.append("file", file);
-            data.append("upload_preset", "upload_blogit_images");
-            data.append("cloud_name", "dhktfy1xm");
+              const data = new FormData();
+              data.append("file", file);
+              data.append("upload_preset", "upload_blogit_images");
+              data.append("cloud_name", "dhktfy1xm");
 
-            const response = await fetch(
-              "https://api.cloudinary.com/v1_1/dhktfy1xm/image/upload",
-              {
-                method: "POST",
-                body: data,
-              }
-            );
+              const response = await fetch(
+                "https://api.cloudinary.com/v1_1/dhktfy1xm/image/upload",
+                {
+                  method: "POST",
+                  body: data,
+                }
+              );
 
-            const uploadedImageURL = await response.json();
-            setProfilePhotoUrl(uploadedImageURL.url);
-          }}
-        />
+              const uploadedImageURL = await response.json();
+              setProfilePhotoUrl(uploadedImageURL.url);
+              setUploadingImg("");
+            }}
+          />
+        </div>
         <button
           className="save-profile-pic-btn"
           onClick={handleSave}
