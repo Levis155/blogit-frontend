@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import useUserStore from "../../stores/userStore";
 import "./Header.css";
 
@@ -14,7 +15,22 @@ function Header() {
   ];
 
   function handleLogout() {
-    removeUserInfo();
+          toast.success(
+            "Logging you out.",
+            {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              onClose: () => {
+                removeUserInfo();
+              },
+            }
+          );
   }
 
   if (!user) {
@@ -35,6 +51,18 @@ function Header() {
   } else {
     return (
       <header className="header-logged-in">
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+              />
         <div className="header-left-logged-in">
           <Link to="/">
             <p className="logo">Blogit</p>
