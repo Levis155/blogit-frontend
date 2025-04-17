@@ -13,7 +13,7 @@ function ArticleSection() {
   const { blogId } = useParams();
 
   const { data } = useQuery({
-    queryKey: ["get-blog"],
+    queryKey: ["get-blog-article"],
     queryFn: async () => {
       const response = await axios.get(`${apiUrl}/blogs/${blogId}`, {
         withCredentials: true,
@@ -163,7 +163,10 @@ function FeaturedArticleCard({
   updateDate,
 }) {
   return (
-    <Link to={`/article/${blogId}`} className="featured-article-card-link">
+    <a 
+      href={`/article/${blogId}`}  
+      className="featured-article-card-link"
+    >
       <div className="featured-article-card">
         <div className="featured-article-left">
           <img src={featuredArticleCardImage} alt="" />
@@ -176,7 +179,7 @@ function FeaturedArticleCard({
           </div>
         </div>
       </div>
-    </Link>
+    </a>
   );
 }
 

@@ -24,6 +24,18 @@ function MyBlogsSection() {
 
   return (
     <section className="my-blogs-section">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       {isLoading && (
         <div className="my-blogs-loader-container">
           <PulseLoader size={30} color="#4b1e09" />
@@ -64,18 +76,6 @@ function MyBlogsSection() {
           ))}
         </>
       )}
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </section>
   );
 }
