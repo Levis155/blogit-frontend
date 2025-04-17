@@ -1,9 +1,14 @@
+.section-cont{
+  width: 100%;
+}
 .blogs-listing-section {
   padding: 5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
   row-gap: 3rem;
+  width: 100%;
+  position: relative;
 }
 .blogs-listing-card {
   background-color: var(--white-color);
@@ -67,7 +72,10 @@
   text-transform: capitalize;
 }
 .no-blogs, .blogs-listing-loader-container, .blogs-listing-error-container {
-  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
   height: 30rem;
   display: flex;
   flex-direction: column;
