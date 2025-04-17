@@ -19,7 +19,7 @@ function HeroSection() {
             start sharing
           </Link>
           <Link to="/all-blogs" className="hero-explore-link">
-            explore voices
+            explore blogs
           </Link>
         </div>
       </div>
