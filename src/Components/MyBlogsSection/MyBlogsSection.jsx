@@ -60,7 +60,7 @@ function MyBlogsSection() {
       {!isLoading && !isError && data.length > 0 && (
         <>
           <NavLink to="/write" className="create-new-link">
-            create new blog
+            write a new blog
           </NavLink>
           {data.map((item) => (
             <MyBlogsCard
