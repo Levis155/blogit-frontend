@@ -54,7 +54,7 @@ function WriteSection() {
   function handlePublish(e) {
     e.preventDefault();
     setFormError(null);
-    if (!title || !excerpt || !blogImageUrl) {
+    if (!title || !excerpt ) {
       setFormError("All fields are required.");
       return;
     }
