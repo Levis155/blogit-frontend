@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import { IoMdArrowRoundForward } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 import "./ArticleSection.css";
 import avatarImagePlaceholder from "../../assets/blank-user-img.png";
 import blogImagePlaceholder from "../../assets/blank-blog-img.jpg";
@@ -23,9 +23,9 @@ function ArticleSection() {
   });
   return (
     <div>
-      <div className="explore-link">
+      <div className="back-link">
         <Link to={"/all-blogs"}>
-          explore more blogs <IoMdArrowRoundForward />
+        <IoIosArrowBack />back to blogs 
         </Link>
       </div>
       <section className="article-section">

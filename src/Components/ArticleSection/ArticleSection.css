@@ -5,16 +5,15 @@
 .article-container {
   width: 55%;
 }
-.explore-link {
+.back-link {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-right: 5rem;
+  padding-left: 5rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   text-transform: uppercase;
 }
-.explore-link a {
+.back-link a {
   text-decoration: none;
   color: var(--orange-color);
   display: flex;
@@ -22,7 +21,7 @@
   align-items: center;
   transition: all, 0.4s;
 }
-.explore-link a:hover {
+.back-link a:hover {
   color: var(--brown-color);
 }
 .article-title {
