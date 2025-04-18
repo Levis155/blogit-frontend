@@ -25,7 +25,7 @@ function ArticleSection() {
     <div>
       <div className="back-link">
         <Link to={"/all-blogs"}>
-        <IoIosArrowBack />back to blogs 
+        <IoIosArrowBack />back to all blogs 
         </Link>
       </div>
       <section className="article-section">
