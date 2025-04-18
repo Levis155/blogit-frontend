@@ -1,8 +1,10 @@
 import "./HeroSection.css";
 import heroImage from "../../assets/hero-img.jpg";
+import useUserStore from "../../stores/userStore";
 import { Link } from "react-router-dom";
 
 function HeroSection() {
+  const user = useUserStore((state) => state.user);
   return (
     <section className="hero-section">
       <div className="hero-section-left">
@@ -15,10 +17,10 @@ function HeroSection() {
           into something extraordinary.
         </p>
         <div className="hero-cta-links-container">
-          <Link to="/write" className="hero-start-link">
+          <Link to={user ? "/write" : "/signin"} className="hero-start-link">
             start sharing
           </Link>
-          <Link to="/all-blogs" className="hero-explore-link">
+          <Link to={user ? "/all-blogs" : "/signin"} className="hero-explore-link">
             explore blogs
           </Link>
         </div>
