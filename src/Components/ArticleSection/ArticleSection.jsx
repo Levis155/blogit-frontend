@@ -135,7 +135,7 @@ function MoreArticles() {
 
   if (isLoading) return <div>Loading more articles...</div>;
 
-  const lastSevenBlogs = data?.slice(-7) || [];
+  const lastSevenBlogs = data?.slice(-5) || [];
 
   return (
     <div className="more-articles">

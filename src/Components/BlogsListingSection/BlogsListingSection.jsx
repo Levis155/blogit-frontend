@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { format } from "date-fns";
@@ -96,9 +95,9 @@ function BlogsListingCard({
 
         <p className="blogs-listing-card-excerpt">{blogsListingCardExcerpt}</p>
 
-        <Link to={`/article/${blogId}`} className="blogs-listing-card-link">
+        <a href={`/article/${blogId}`} className="blogs-listing-card-link">
           read more
-        </Link>
+        </a>
       </div>
     </div>
   );
