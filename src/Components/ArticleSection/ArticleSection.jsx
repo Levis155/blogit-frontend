@@ -100,7 +100,7 @@ function SameAuthorArticles({ authorId }) {
 
   return (
     <div className="same-author-articles">
-      <p className="featured-articles-title">more from this author</p>
+      <p className="featured-articles-title">from this author</p>
 
       {blogsBySameUser.length > 0 ? (
         blogsBySameUser.map((blog) => (
@@ -139,7 +139,7 @@ function MoreArticles() {
 
   return (
     <div className="more-articles">
-      <p className="featured-articles-title">more articles</p>
+      <p className="featured-articles-title">more blogs</p>
 
       {lastSevenBlogs.map((blog) => (
         <FeaturedArticleCard
