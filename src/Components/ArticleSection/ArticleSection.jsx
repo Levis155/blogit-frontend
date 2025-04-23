@@ -4,6 +4,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
+import ReactMarkdown from 'react-markdown';
 import "./ArticleSection.css";
 import avatarImagePlaceholder from "../../assets/blank-user-img.png";
 import blogImagePlaceholder from "../../assets/blank-blog-img.jpg";
@@ -69,7 +70,7 @@ function ArticleContainer({ data }) {
       </div>
 
       <div className="article-content">
-        <p>This is where the article content will go.</p>
+        <ReactMarkdown>{data && data?.content}</ReactMarkdown>
       </div>
     </div>
   );

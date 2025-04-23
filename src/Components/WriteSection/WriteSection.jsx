@@ -10,6 +10,7 @@ import apiUrl from "../../utils/apiUrl";
 function WriteSection() {
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
+  const [content, setContent] = useState("");
   const [blogImageUrl, setBlogImageUrl] = useState("");
   const [formError, setFormError] = useState(null);
   const [uploadingImg, setUploadingImg] = useState("");
@@ -20,7 +21,7 @@ function WriteSection() {
     mutationFn: async () => {
       const response = await axios.post(
         `${apiUrl}/blogs`,
-        { title, excerpt, blogImageUrl },
+        { title, excerpt, blogImageUrl, content },
         { withCredentials: true }
       );
       return response.data;
@@ -54,7 +55,7 @@ function WriteSection() {
   function handlePublish(e) {
     e.preventDefault();
     setFormError(null);
-    if (!title || !excerpt ) {
+    if (!title || !excerpt || !content) {
       setFormError("All fields are required.");
       return;
     }
@@ -132,6 +133,14 @@ function WriteSection() {
           placeHolder="Provide a brief excerpt to the blog. Give a comprehensive but brief preview to your blog."
         />
 
+        <ContentInput
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          label="blog content"
+          id="content-input"
+          placeHolder="Provide the content of your blog (Markdown is supported)."
+        />
+
         <button disabled={isPending} className="publish-btn">
           {isPending ? "please wait" : "publish"}
         </button>
@@ -156,6 +165,20 @@ function TitleInput({ label, inputType, id, value, onChange, placeHolder }) {
 }
 
 function ExcerptInput({ label, value, onChange, id, placeHolder }) {
+  return (
+    <div className="excerpt-input">
+      <label>{label}</label>
+      <textarea
+        value={value}
+        onChange={onChange}
+        id={id}
+        placeholder={placeHolder}
+      />
+    </div>
+  );
+}
+
+function ContentInput({ label, value, onChange, id, placeHolder }) {
   return (
     <div className="excerpt-input">
       <label>{label}</label>

@@ -41,9 +41,11 @@
   height: 100%;
   object-fit: cover;
 }
-.article-content p {
-  font-size: 4rem;
-  color: var(--brown-color);
+.article-content  {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
 }
 .featured-articles-cont {
   width: 45%;

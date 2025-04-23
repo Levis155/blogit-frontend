@@ -11,6 +11,7 @@ function EditBlogSection() {
   const { blogId } = useParams();
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
+  const [content, setContent] = useState("");
   const [blogImageUrl, setBlogImageUrl] = useState("");
   const [formError, setFormError] = useState(null);
   const [uploadingImg, setUploadingImg] = useState("");
@@ -31,7 +32,7 @@ function EditBlogSection() {
     mutationFn: async () => {
       const response = await axios.patch(
         `${apiUrl}/blogs/${blogId}`,
-        { title, excerpt, blogImageUrl },
+        { title, excerpt, blogImageUrl, content },
         { withCredentials: true }
       );
     },
@@ -65,13 +66,14 @@ function EditBlogSection() {
     if (data) {
       setTitle(data.title);
       setExcerpt(data.excerpt);
+      setContent(data.content);
     }
   }, [data]);
 
   function handleSave(e) {
     e.preventDefault();
     setFormError(null);
-    if (!title || !excerpt ) {
+    if (!title || !excerpt || !content ) {
       setFormError("All fields are required.");
       return;
     }
@@ -147,6 +149,14 @@ function EditBlogSection() {
           placeHolder="Provide a brief excerpt to the blog. Give a comprehensive but brief preview to your blog."
         />
 
+        <ContentInput
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          label="new blog content"
+          id="content-input"
+          placeHolder="Provide a brief excerpt to the blog. Give a comprehensive but brief preview to your blog."
+        />
+
         <button className="save-btn" disabled={isPending}>
           {isPending ? "please wait..." : "save"}
         </button>
@@ -171,6 +181,20 @@ function TitleInput({ label, inputType, id, value, onChange, placeHolder }) {
 }
 
 function ExcerptInput({ label, value, onChange, id, placeHolder }) {
+  return (
+    <div className="excerpt-input">
+      <label>{label}</label>
+      <textarea
+        value={value}
+        onChange={onChange}
+        id={id}
+        placeholder={placeHolder}
+      />
+    </div>
+  );
+}
+
+function ContentInput({ label, value, onChange, id, placeHolder }) {
   return (
     <div className="excerpt-input">
       <label>{label}</label>
