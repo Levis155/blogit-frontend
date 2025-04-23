@@ -2,9 +2,13 @@
 .header-logged-in {
   display: flex;
   padding: 2rem 5rem;
-  /* background-color: lightblue; */
   height: 12vh;
-  /* border-bottom: 1px solid var(--brown-color); */
+}
+@media screen and (max-width: 68.125em) {
+  .header-logged-out,
+  .header-logged-in {
+    display: none;
+  }
 }
 .logo {
   font-size: 2.5rem;

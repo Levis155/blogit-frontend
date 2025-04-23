@@ -1,0 +1,123 @@
+.mobile-header-logged-out,
+.mobile-header-logged-in {
+    position: relative;
+  display: none;
+}
+@media screen and (max-width: 68.125em) {
+  .mobile-header-logged-in {
+    display: flex;
+    padding: 2rem 5rem;
+    height: 12vh;
+  }
+}
+@media screen and (max-width: 50em) {
+    .mobile-header-logged-out {
+      display: flex;
+      padding: 2rem 5rem;
+      height: 12vh;
+    }
+  }
+.mobile-logo {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--brown-color);
+}
+.mobile-header-left-logged-out {
+  flex: 1;
+}
+
+.mobile-header-right-logged-out {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    position: absolute;
+    top: 12vh;
+    right: 0;
+    height: 88vh;
+    padding: 2rem;
+    background-color: var(--brown-color);
+}
+.mobile-header-right-logged-out a {
+  color: var(--orange-color);
+  background-color: transparent;
+  border: 1px solid var(--orange-color);
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mobile-header-left-logged-in {
+  width: 10%;
+  display: flex;
+  align-items: center;
+}
+.mobile-header-middle-logged-in {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 12vh;
+  right: 0;
+  height: 88vh;
+  padding: 2rem;
+  background-color: var(--brown-color);
+  z-index: 2;
+}
+.mobile-header-middle-logged-in a {
+  color: var(--orange-color);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+}
+.mobile-active-link {
+  border-bottom: 1px solid var(--orange-color) !important;
+}
+.mobile-logout-btn {
+  color: var(--orange-color);
+  background-color: transparent;
+  border: 1px solid var(--orange-color);
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.mobile-header-right-logged-in {
+  width: 20%;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-end;
+}
+@media screen and (max-width: 68.125em) {
+    .mobile-header-right-logged-in {
+      flex: 1;
+    }
+  }
+.mobile-header-right-logged-in p {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: capitalize;
+  color: var(--brown-color);
+}
+.mobile-header-right-logged-in a{
+    display: flex;
+    align-items: center;
+}
+.hamburger-menu{
+    position: absolute;
+    right: 2%;
+    top: 40%;
+    cursor: pointer;
+    font-size: 2.5rem;
+    color: var(--brown-color);
+}
