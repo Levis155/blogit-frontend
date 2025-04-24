@@ -5,8 +5,12 @@
   height: 12vh;
 }
 @media screen and (max-width: 68.125em) {
-  .header-logged-out,
   .header-logged-in {
+    display: none;
+  }
+}
+@media screen and (max-width: 50em) {
+  .header-logged-out {
     display: none;
   }
 }
