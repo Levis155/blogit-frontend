@@ -144,7 +144,7 @@
   font-weight: 800;
   color: var(--brown-color);
 }
-@media screen and (max-width: 76.25em) {
+@media screen and (max-width: 56.25em) {
   .stat-title{
     font-size: 1.8rem;
   }
@@ -153,7 +153,7 @@
   font-size: 1.4rem;
   text-transform: uppercase;
 }
-@media screen and (max-width: 76.25em) {
+@media screen and (max-width: 56.25em) {
   .stat-subtitle{
     font-size: 1.2rem;
   }

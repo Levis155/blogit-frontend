@@ -10,6 +10,17 @@
   width: 100%;
   position: relative;
 }
+@media screen and (max-width:62.5em) {
+  .blogs-listing-section{
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 56.25em) {
+  .blogs-listing-section{
+    padding: 2rem;
+  }
+}
 .blogs-listing-card {
   background-color: var(--white-color);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
