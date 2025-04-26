@@ -10,6 +10,11 @@
     height: 12vh;
   }
 }
+@media screen and (max-width: 56.25em) {
+  .mobile-header-logged-in{
+    padding: 2rem;
+  }
+}
 @media screen and (max-width: 50em) {
     .mobile-header-logged-out {
       display: flex;
@@ -97,6 +102,11 @@
   height: 100%;
   align-items: center;
   justify-content: flex-end;
+}
+@media screen and (max-width: 56.25em) {
+  .mobile-header-right-logged-in{
+    padding-right: 1.5rem;
+  }
 }
 @media screen and (max-width: 68.125em) {
     .mobile-header-right-logged-in {
