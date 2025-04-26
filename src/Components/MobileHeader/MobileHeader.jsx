@@ -65,7 +65,7 @@ function MobileHeader() {
     );
   } else {
     return (
-      <header className="mobile-header-logged-in">
+      <>
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -78,49 +78,51 @@ function MobileHeader() {
           pauseOnHover
           theme="colored"
         />
-        <div className="mobile-header-left-logged-in">
-          <Link to="/">
-            <p className="mobile-logo">Blogit</p>
-          </Link>
-        </div>
+        <header className="mobile-header-logged-in">
+          <div className="mobile-header-left-logged-in">
+            <Link to="/">
+              <p className="mobile-logo">Blogit</p>
+            </Link>
+          </div>
 
-        {click && (
-          <nav className="mobile-header-middle-logged-in">
-            {navLinks.map((navLink) => (
-              <NavLink
-                key={navLink.label}
-                to={navLink.to}
-                className={({ isActive }) =>
-                  isActive === true ? "mobile-active-link" : ""
-                }
-              >
-                {navLink.label}
-              </NavLink>
-            ))}
-            <button className="mobile-logout-btn" onClick={handleLogout}>
-              log out
-            </button>
-          </nav>
-        )}
+          {click && (
+            <nav className="mobile-header-middle-logged-in">
+              {navLinks.map((navLink) => (
+                <NavLink
+                  key={navLink.label}
+                  to={navLink.to}
+                  className={({ isActive }) =>
+                    isActive === true ? "mobile-active-link" : ""
+                  }
+                >
+                  {navLink.label}
+                </NavLink>
+              ))}
+              <button className="mobile-logout-btn" onClick={handleLogout}>
+                log out
+              </button>
+            </nav>
+          )}
 
-        <div className="mobile-header-right-logged-in">
-          <Link to="/my-profile">
-            <p>hey {user.userName}👋🏾</p>
-          </Link>
-        </div>
+          <div className="mobile-header-right-logged-in">
+            <Link to="/my-profile">
+              <p>hey {user.userName}👋🏾</p>
+            </Link>
+          </div>
 
-        {click ? (
-          <MdClose
-            className="hamburger-menu"
-            onClick={() => setClick(!click)}
-          />
-        ) : (
-          <GiHamburgerMenu
-            className="hamburger-menu"
-            onClick={() => setClick(!click)}
-          />
-        )}
-      </header>
+          {click ? (
+            <MdClose
+              className="hamburger-menu"
+              onClick={() => setClick(!click)}
+            />
+          ) : (
+            <GiHamburgerMenu
+              className="hamburger-menu"
+              onClick={() => setClick(!click)}
+            />
+          )}
+        </header>
+      </>
     );
   }
 }

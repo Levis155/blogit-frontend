@@ -47,7 +47,7 @@ function Header() {
     );
   } else {
     return (
-      <header className="header-logged-in">
+      <>
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -60,35 +60,37 @@ function Header() {
           pauseOnHover
           theme="colored"
         />
-        <div className="header-left-logged-in">
-          <Link to="/">
-            <p className="logo">Blogit</p>
-          </Link>
-        </div>
+        <header className="header-logged-in">
+          <div className="header-left-logged-in">
+            <Link to="/">
+              <p className="logo">Blogit</p>
+            </Link>
+          </div>
 
-        <nav className="header-middle-logged-in">
-          {navLinks.map((navLink) => (
-            <NavLink
-              key={navLink.label}
-              to={navLink.to}
-              className={({ isActive }) =>
-                isActive === true ? "active-link" : ""
-              }
-            >
-              {navLink.label}
-            </NavLink>
-          ))}
-          <button className="logout-btn" onClick={handleLogout}>
-            log out
-          </button>
-        </nav>
+          <nav className="header-middle-logged-in">
+            {navLinks.map((navLink) => (
+              <NavLink
+                key={navLink.label}
+                to={navLink.to}
+                className={({ isActive }) =>
+                  isActive === true ? "active-link" : ""
+                }
+              >
+                {navLink.label}
+              </NavLink>
+            ))}
+            <button className="logout-btn" onClick={handleLogout}>
+              log out
+            </button>
+          </nav>
 
-        <div className="header-right-logged-in">
-          <Link to="/my-profile">
-            <p>hey {user.userName}👋🏾</p>
-          </Link>
-        </div>
-      </header>
+          <div className="header-right-logged-in">
+            <Link to="/my-profile">
+              <p>hey {user.userName}👋🏾</p>
+            </Link>
+          </div>
+        </header>
+      </>
     );
   }
 }
