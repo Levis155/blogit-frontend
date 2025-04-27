@@ -102,11 +102,7 @@
   height: 100%;
   align-items: center;
   justify-content: flex-end;
-}
-@media screen and (max-width: 56.25em) {
-  .mobile-header-right-logged-in{
-    padding-right: 1.5rem;
-  }
+  padding-right: 2.5rem;
 }
 @media screen and (max-width: 68.125em) {
     .mobile-header-right-logged-in {

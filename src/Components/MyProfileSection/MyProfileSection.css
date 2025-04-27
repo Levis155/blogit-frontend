@@ -1,6 +1,11 @@
 .my-profile-section {
   padding: 5rem;
 }
+@media screen and (max-width:62.5em) {
+  .my-profile-section{
+    padding: 2rem;
+  }
+}
 .my-profile-header {
   height: 10rem;
   display: flex;
@@ -74,6 +79,11 @@
   gap: 1.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid lightgray;
+}
+@media screen and (max-width:31.25em) {
+  .profile-detail{
+    width: 100%;
+  }
 }
 .profile-detail-title {
   font-size: 1.9rem;
