@@ -85,4 +85,6 @@
   font-weight: 800;
   text-transform: capitalize;
   color: var(--brown-color);
+  font-family: "Dancing Script", cursive;
+
 }

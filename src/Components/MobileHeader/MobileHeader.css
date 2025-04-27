@@ -1,6 +1,6 @@
 .mobile-header-logged-out,
 .mobile-header-logged-in {
-    position: relative;
+  position: relative;
   display: none;
 }
 @media screen and (max-width: 68.125em) {
@@ -8,17 +8,18 @@
     display: flex;
     padding: 2rem 5rem;
     height: 12vh;
+    align-items: center;
   }
 }
 @media screen and (max-width: 56.25em) {
-  .mobile-header-logged-in{
+  .mobile-header-logged-in,.mobile-header-logged-out{
     padding: 2rem;
   }
 }
 @media screen and (max-width: 50em) {
     .mobile-header-logged-out {
       display: flex;
-      padding: 2rem 5rem;
+      align-items: center;
       height: 12vh;
     }
   }
@@ -114,6 +115,7 @@
   font-weight: 800;
   text-transform: capitalize;
   color: var(--brown-color);
+  font-family: "Dancing Script", cursive;
 }
 .mobile-header-right-logged-in a{
     display: flex;
