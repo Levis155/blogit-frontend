@@ -63,6 +63,11 @@
   font-weight: 800;
   text-transform: capitalize;
 }
+@media screen and (max-width:37.5em) {
+  .blogs-listing-author-name{
+    font-size: 1.6rem;
+  }
+}
 .blogs-listing-author-date {
   font-size: 1.4rem;
   text-transform: capitalize;
@@ -72,6 +77,11 @@
   font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
+}
+@media screen and (max-width:37.5em) {
+  .blogs-listing-card-title{
+    font-size: 1.8rem;
+  }
 }
 .blogs-listing-card-excerpt {
   margin-bottom: 2rem;
