@@ -35,7 +35,7 @@
   object-fit: cover;
 }
 .blogs-listing-card-bottom {
-  padding: 1rem 3rem 3rem 3rem;
+  padding: 1rem 1rem 3rem 1rem;
 }
 .blogs-listing-author-cont {
   display: flex;

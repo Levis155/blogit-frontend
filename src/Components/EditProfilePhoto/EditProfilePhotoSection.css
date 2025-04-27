@@ -16,6 +16,16 @@
   align-items: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
 }
+@media screen and (max-width: 56.25em) {
+  .edit-profile-photo-container{
+    width: 70%;
+  }
+}
+@media screen and (max-width: 37.5em) {
+  .edit-profile-photo-container{
+    width: 85%;
+  }
+}
 .icon-cont {
   border: 3px solid var(--brown-color);
   color: var(--brown-color);
@@ -32,6 +42,11 @@
   font-weight: 800;
   text-transform: capitalize;
   color: var(--brown-color);
+}
+@media screen and (max-width: 37.5em) {
+  .upload-title{
+    font-size: 1.8rem;
+  }
 }
 .input{
   display: flex;
