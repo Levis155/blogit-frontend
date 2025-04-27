@@ -100,6 +100,7 @@
   flex-direction: column;
   gap: 4rem;
   justify-content: flex-end;
+  z-index: -1;
 }
 @media screen and (max-width: 76.25em) {
   .hero-section-right{
