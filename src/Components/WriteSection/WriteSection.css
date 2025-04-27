@@ -73,7 +73,6 @@ label {
   padding: 1rem;
   font-size: 1.6rem;
   outline: none;
-  /* background-color: var(--gray-x-light); */
   font-family: inherit;
   resize: vertical;
 }

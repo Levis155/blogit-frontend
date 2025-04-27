@@ -176,7 +176,7 @@ function FeaturedArticleCard({
           <p className="featured-article-title">{featuredArticleCardTitle}</p>
           <div className="featured-article-details">
             <p className="featured-article-author">author: {authorUsername}</p>
-            <p className="featured-article-date">Last updated: {updateDate}</p>
+            <p className="featured-article-date">updated: {updateDate}</p>
           </div>
         </div>
       </div>
