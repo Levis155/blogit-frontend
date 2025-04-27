@@ -9,6 +9,11 @@
   padding: 2rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
 }
+@media screen and (max-width:50em) {
+  .write-form{
+    width: 90%;
+  }
+}
 .write-form-title {
   font-size: 3rem;
   font-weight: 800;
@@ -16,6 +21,12 @@
   color: var(--brown-color);
   margin-bottom: 2rem;
 }
+@media screen and (max-width:50em) {
+  .write-form-title{
+    font-size: 2.5rem;
+  }
+}
+
 .title-input,
 .excerpt-input,
 .img-input-cont {

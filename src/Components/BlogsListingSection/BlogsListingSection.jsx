@@ -85,8 +85,7 @@ function BlogsListingCard({
               {blogsListingFirstName} {blogsListingLastName}
             </p>
             <p className="blogs-listing-author-date">
-              last updated:{" "}
-              {format(new Date(blogsListingAuthorDate), "dd MMMM yyyy")}
+              updated: {format(new Date(blogsListingAuthorDate), "dd MMMM yyyy")}
             </p>
           </div>
         </div>
