@@ -11,7 +11,7 @@ function BlogsListingSection() {
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ["fetch-all-blogs"],
     queryFn: async () => {
-      const response = await axios.get(`${apiUrl}/blogs/all-blogs`, {
+      const response = await axios.get(`${apiUrl}/blogs`, {
         withCredentials: true,
       });
       return response.data.allUsersBlogs;
