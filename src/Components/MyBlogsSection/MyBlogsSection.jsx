@@ -15,7 +15,7 @@ function MyBlogsSection() {
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ["fetch-all-blogs-by-user"],
     queryFn: async () => {
-      const response = await axios.get(`${apiUrl}/blogs`, {
+      const response = await axios.get(`${apiUrl}/blogs/user`, {
         withCredentials: true,
       });
       return response.data;
