@@ -29,25 +29,15 @@ function SignupSection() {
 }
 
 function SignupCard() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [emailAddress, setEmailAddress] = useState("");
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmedPassword, setConfirmedPassword] = useState("");
+  const [formData, setFormData] = useState({firstName: "", lastName: "", emailAddress:"", userName:"", password:"", confirmedPassword:""})
   const [formError, setFormError] = useState(null);
   const navigate = useNavigate();
 
   const { isPending, mutate } = useMutation({
     mutationKey: ["register-user"],
     mutationFn: async () => {
-      const response = await axios.post(`${apiUrl}/auth/register`, {
-        firstName,
-        lastName,
-        emailAddress,
-        userName,
-        password,
-      });
+      const response = await axios.post(`${apiUrl}/auth/register`, formData);
+      console.log(response.data);
       return response.data;
     },
     onSuccess: () => {
@@ -73,10 +63,14 @@ function SignupCard() {
     },
   });
 
+  function handleOnchange(e) {
+    setFormData({...formData, [e.target.name]: e.target.value})
+  }
+
   function handleRegister(e) {
     e.preventDefault();
     setFormError(null);
-    if (password !== confirmedPassword) {
+    if (formData.password !== formData.confirmedPassword) {
       setFormError("Password and confirmed password don't match!");
       return;
     }
@@ -101,8 +95,9 @@ function SignupCard() {
         variant="standard"
         label="First Name"
         required
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
+        value={formData.firstName}
+        name="firstName"
+        onChange={handleOnchange}
         sx={{
           mb: "2rem",
           "& .MuiInputBase-input": { fontSize: "1.8rem" },
@@ -113,8 +108,9 @@ function SignupCard() {
         variant="standard"
         label="Last Name"
         required
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
+        value={formData.lastName}
+        name="lastName"
+        onChange={handleOnchange}
         sx={{
           mb: "2rem",
           "& .MuiInputBase-input": { fontSize: "1.8rem" },
@@ -125,8 +121,9 @@ function SignupCard() {
         variant="standard"
         label="Email"
         required
-        value={emailAddress}
-        onChange={(e) => setEmailAddress(e.target.value)}
+        value={formData.emailAddress}
+        name="emailAddress"
+        onChange={handleOnchange}
         sx={{
           mb: "2rem",
           "& .MuiInputBase-input": { fontSize: "1.8rem" },
@@ -137,8 +134,9 @@ function SignupCard() {
         variant="standard"
         label="Username"
         required
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)}
+        value={formData.userName}
+        name="userName"
+        onChange={handleOnchange}
         sx={{
           mb: "2rem",
           "& .MuiInputBase-input": { fontSize: "1.8rem" },
@@ -150,8 +148,9 @@ function SignupCard() {
         type="password"
         label="Password"
         required
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={formData.password}
+        name="password"
+        onChange={handleOnchange}
         sx={{
           mb: "2rem",
           "& .MuiInputBase-input": { fontSize: "1.8rem" },
@@ -163,8 +162,9 @@ function SignupCard() {
         type="password"
         label="Confirm Password"
         required
-        value={confirmedPassword}
-        onChange={(e) => setConfirmedPassword(e.target.value)}
+        value={formData.confirmedPassword}
+        name="confirmedPassword"
+        onChange={handleOnchange}
         sx={{
           mb: "2rem",
           "& .MuiInputBase-input": { fontSize: "1.8rem" },
