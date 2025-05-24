@@ -37,7 +37,6 @@ function SignupCard() {
     mutationKey: ["register-user"],
     mutationFn: async () => {
       const response = await axios.post(`${apiUrl}/auth/register`, formData);
-      console.log(response.data);
       return response.data;
     },
     onSuccess: () => {

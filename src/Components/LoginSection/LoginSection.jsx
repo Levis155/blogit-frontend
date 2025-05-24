@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import useUserStore from "../../stores/userStore";
 import "./LoginSection.css";
@@ -30,8 +29,7 @@ function LoginSection() {
 }
 
 function LoginCard() {
-  const [identifier, setIdentifier] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({ identifier: "", password: "" });
   const [formError, setFormError] = useState(null);
   const setUserInformation = useUserStore((state) => state.setUserInfo);
   const navigate = useNavigate();
@@ -39,11 +37,9 @@ function LoginCard() {
   const { isPending, mutate } = useMutation({
     mutationKey: ["user-login"],
     mutationFn: async () => {
-      const response = await axios.post(
-        `${apiUrl}/auth/login`,
-        { identifier, password },
-        { withCredentials: true }
-      );
+      const response = await axios.post(`${apiUrl}/auth/login`, formData, {
+        withCredentials: true,
+      });
       return response.data;
     },
     onSuccess: (data) => {
@@ -70,6 +66,10 @@ function LoginCard() {
     },
   });
 
+  function handleOnchange(e) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
   function handleLogin(e) {
     setFormError(null);
     e.preventDefault();
@@ -93,8 +93,9 @@ function LoginCard() {
         variant="standard"
         label="Username or Email"
         required
-        value={identifier}
-        onChange={(e) => setIdentifier(e.target.value)}
+        value={formData.identifier}
+        name="identifier"
+        onChange={handleOnchange}
         sx={{
           mb: "2rem",
           "& .MuiInputBase-input": { fontSize: "1.8rem" },
@@ -106,8 +107,9 @@ function LoginCard() {
         type="password"
         label="Password"
         required
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={formData.password}
+        name="password"
+        onChange={handleOnchange}
         sx={{
           mb: "2rem",
           "& .MuiInputBase-input": { fontSize: "1.8rem" },
