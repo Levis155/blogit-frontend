@@ -89,7 +89,7 @@ function SameAuthorArticles({ authorId }) {
   const { isLoading, data } = useQuery({
     queryKey: ["fetch-all-users-blogs"],
     queryFn: async () => {
-      const response = await axios.get(`${apiUrl}/blogs/all-blogs`, {
+      const response = await axios.get(`${apiUrl}/blogs/user`, {
         withCredentials: true,
       });
       return response.data.allUsersBlogs;
@@ -127,7 +127,7 @@ function MoreArticles() {
   const { isLoading, data } = useQuery({
     queryKey: ["fetch-all-users-blogs"],
     queryFn: async () => {
-      const response = await axios.get(`${apiUrl}/blogs/all-blogs`, {
+      const response = await axios.get(`${apiUrl}/blogs`, {
         withCredentials: true,
       });
       return response.data.allUsersBlogs;
