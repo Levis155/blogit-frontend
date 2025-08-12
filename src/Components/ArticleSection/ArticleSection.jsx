@@ -70,7 +70,7 @@ function ArticleContainer({ data }) {
       </div>
 
       <div className="article-content">
-        <ReactMarkdown>{data && data?.content}</ReactMarkdown>
+        <ReactMarkdown>{data && data?.excerpt}</ReactMarkdown>
       </div>
     </div>
   );
@@ -92,7 +92,7 @@ function SameAuthorArticles({ authorId }) {
       const response = await axios.get(`${apiUrl}/blogs/user`, {
         withCredentials: true,
       });
-      return response.data.allUsersBlogs;
+      return response.data;
     },
   });
 
@@ -125,7 +125,7 @@ function SameAuthorArticles({ authorId }) {
 
 function MoreArticles() {
   const { isLoading, data } = useQuery({
-    queryKey: ["fetch-all-users-blogs"],
+    queryKey: ["fetch-all-blogs"],
     queryFn: async () => {
       const response = await axios.get(`${apiUrl}/blogs`, {
         withCredentials: true,
